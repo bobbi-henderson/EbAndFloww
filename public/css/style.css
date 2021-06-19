@@ -1,5 +1,11 @@
 body {
-    background-color: aqua;
+    background-color: #59253A;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    background-color: #2D4159;
 }
 
 a {
@@ -10,17 +16,44 @@ a:hover {
     color: black;
 }
 
+.jumbotron {
+    background-image: url('/images/Eb&FlowwHeader.jpeg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40em;
+    padding-top: 50%;
+}
+
 #footer {
-    background-color: rgb(137, 247, 110);
-    position: absolute;
+    background-color: #2D4159;
     left: 0;
     bottom: 0;
     width: 100%; 
     padding-top: 1em;
+    text-align: start;
 }
 
 .copy {
     text-align: center;
     color: gray;
     font-size: small;
+}
+
+@media screen and (max-width: 760px) {
+    .jumbotron {
+        height: 30em;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .jumbotron {
+        height: 20em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .jumbotron {
+        height: 16em;
+    }
 }

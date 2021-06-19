@@ -10,6 +10,7 @@ const connectDB = require('./config/database')
 const path = require('path')
 const homeRoutes = require('./routers/home')
 const authRoutes = require('./routers/auth')
+const artRoutes = require('./routers/art')
 const PORT = 8000
 
 
@@ -27,7 +28,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(methodOverride('_method'))
 
-
+ 
 app.use(
     session({
       secret: "keyboard cat",
@@ -44,6 +45,7 @@ app.use(passport.session())
 
 app.use('/', homeRoutes)
 app.use('/admin', authRoutes)
+app.use('/art', artRoutes)
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server now running on ${PORT}`);

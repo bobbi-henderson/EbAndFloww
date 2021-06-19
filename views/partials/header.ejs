@@ -10,25 +10,40 @@
     <script src="https://kit.fontawesome.com/6bab3c972e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav id="navbar-example2" class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#footer">Contact</a>
-          </li>
-          <% if(isLoggedIn){%>
-            <li></li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/logout">Logout</a>
-            </li>
-          <%}%>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="/"><img src="/images/navLogoDark.png" alt="Eb & Floww Art"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#available">Available Art</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sold">Sold Art</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <% if(isLoggedIn){%>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/art/addArt">Add Art</a>
+            <a class="dropdown-item" href="#">Add Blog Post</a>
+            <a class="dropdown-item" href="/admin/logout">Logout</a>
+          </div>
+        </li>
+        <%}%>
+      </ul>
+    </div>
+  </nav>
