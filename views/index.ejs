@@ -10,7 +10,9 @@
     <div class="row py-3">
         <%for(let i=0; i<avail.length; i++){%>
             <div class="col-xs-4">
-                <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage mx-3">
+                <a href="art/<%=avail[i]._id%>">
+                    <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage mx-3">
+                </a>
             </div>
         <%}%>
     </div>
@@ -22,7 +24,9 @@
     <div class="row py-3">
         <%for(let i=0; i<sold.length; i++){%>
             <div class="col-xs-4">
-                <img src="<%=sold[i].images[0].url%>" alt="<%=sold[i].name%> Image" class="img-fluid rounded artImage mx-3">
+                <a href="/art/<%=sold[i]._id%>">
+                    <img src="<%=sold[i].images[0].url%>" alt="<%=sold[i].name%> Image" class="img-fluid rounded artImage mx-3">
+                </a>
             </div>
         <%}%>
     </div>

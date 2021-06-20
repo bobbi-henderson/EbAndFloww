@@ -35,5 +35,14 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
+    },
+    getArt: async (req, res) =>{
+        try {
+            const piece = await Art.findById(req.params._id)
+
+            res.render('art.ejs', {piece: piece, isLoggedIn: req.isAuthenticated()})
+        } catch (err) {
+            console.log(err)
+        }
     }
 }

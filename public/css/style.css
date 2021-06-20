@@ -48,7 +48,7 @@ a:hover {
 
 .artImage { 
     height: 300px;
-    max-width: 300px;
+    width: auto;
 }
 
 #footer {
