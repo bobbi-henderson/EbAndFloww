@@ -1,7 +1,12 @@
+html {
+    height: 100%;
+}
+
 body {
     background-color: #59253A;
     color: white;
     text-align: center;
+    min-height: 100%;
 }
 
 nav {
@@ -25,12 +30,32 @@ a:hover {
     padding-top: 50%;
 }
 
+.artContainer {
+    background: linear-gradient(to top, #78244c 0%, #895061 100%);
+    border-radius: 10px;
+}
+
+.artContainer > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.artContainer > .row > .col-xs-4 {
+    display: inline-block;
+    float: none;
+}
+
+.artImage { 
+    height: 300px;
+    max-width: 300px;
+}
+
 #footer {
     background-color: #2D4159;
-    left: 0;
-    bottom: 0;
     width: 100%; 
     padding-top: 1em;
+    margin-top: auto;
     text-align: start;
 }
 

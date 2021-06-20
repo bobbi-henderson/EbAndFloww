@@ -11,4 +11,29 @@ module.exports = {
             res.render('addArt.ejs', {isLoggedIn: req.isAuthenticated()})
         }
     }, 
+    addArt: async (req,res)=>{
+        try {
+            let images = []
+            let files = req.files
+
+            for (let i=0; i<files.length; i++){
+                const result = await cloudinary.uploader.upload(files[i].path)
+
+                images.push({url: result.secure_url, cloudinaryID: result.public_id})
+            }
+
+            await Art.create({
+                name: req.body.name,
+                desc: req.body.desc,
+                images: images,
+                link: req.body.link,
+                price: req.body.price,
+                sold: (req.body.sold === 'on'),
+            })
+
+            res.redirect('/')
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }

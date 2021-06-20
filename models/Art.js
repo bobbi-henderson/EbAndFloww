@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 
 const ArtSchema = new mongoose.Schema({
   name: {type: String},
-  image: {type: String},
-  cloudinaryID: {type: String},
+  images: {type: Array},
   desc: {type: String},
+  price: {type: Number},
+  link: {type: String},
   date: {type: Date, default: Date.now},
   sold: {type: Boolean, default: false},
 })
