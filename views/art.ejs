@@ -3,5 +3,32 @@
 
 <h1><%=piece.name%></h1>
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xs-4">
+            <%if(piece.images.length>1){%>
+                <i class="fas fa-arrow-left"></i>
+                <span class="artPics">
+                    <%for(let i=0; i<piece.images.length; i++) {%>
+                        <%if(i===0){%>
+                            <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid rounded artPhoto">   
+                        <%} else {%>
+                            <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid rounded artPhoto d-none">   
+                        <%}%>
+                    <%}%>
+                </span>
+                <i class="fas fa-arrow-right"></i>
+            <%} else {%>
+                <img src="<%=piece.images[0].url%>" alt="Images of Art" class="img-fluid rounded artPhoto"> 
+            <%}%>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <p><%=piece.desc%></p>
+        <p>$<%=piece.price%></p>
+    </div>
+</div>
+
+
 
 <%- include('partials/footer') %>

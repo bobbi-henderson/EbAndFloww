@@ -21,6 +21,10 @@ a:hover {
     color: black;
 }
 
+.hidden {
+    display: none;
+}
+
 .jumbotron {
     background-image: url('/images/Eb&FlowwHeader.jpeg');
     background-position: top center;
@@ -28,6 +32,14 @@ a:hover {
     background-size: cover;
     height: 40em;
     padding-top: 50%;
+}
+
+.aboutContainer {
+    background: linear-gradient(to top, #cac9c9 0%, whitesmoke 100%);
+    background-color: whitesmoke;
+    color: #78244c;
+    border-radius: 10px;
+    box-shadow: 2px 2px;
 }
 
 .artContainer {
@@ -48,6 +60,11 @@ a:hover {
 
 .artImage { 
     height: 300px;
+    width: auto;
+}
+
+.artPhoto {
+    height: 500px;
     width: auto;
 }
 
