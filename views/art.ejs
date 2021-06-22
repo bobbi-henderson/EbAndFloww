@@ -37,10 +37,35 @@
             <p>Purchase on <a href="<%=piece.link%>">Etsy</a></p>
         <%}%>
     </div>
+    <div class="row justify-content-center">
+        <%if(piece.sold){%>
+            <h4>Do you have a question about this piece or want one like it? <br> Inquire Here:</h4>
+        <%} else {%>
+            <h4>Do you have a question about this piece? Inquire Here:</h4>
+        <%}%>
+        <form method="POST" action="/art/inquiry/<%=piece._id%>" class="w-50">
+            <div class="form-row">
+            <div class="form-group col-6">
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div class="form-group col-6">
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="col">
+                <textarea class="form-control pb-5"  name="message" id="message" placeholder="Message"></textarea>
+            </div>
+            </div>
+            <input class="mt-2 btn btn-outline-light" type="submit" value="Submit" class="primary"/>
+        </form>
+    </div>
 </div>
 
 <% if(piece.images.length > 1){%>
     <script src="/js/changePic.js"></script>
 <%}%>
+
+
 
 <%- include('partials/footer') %>

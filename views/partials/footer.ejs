@@ -1,7 +1,8 @@
     <footer id="footer" class="mt-auto">
         <div class="container" id="contact">
-            <div class="row">
-            <section class="col-7">
+            <div class="row justify-content-center">
+            <%if(!isArtOrAuth){%>
+            <section class="col-7"> 
                 <h4>Get in touch</h4>
                 <form name=”EmailForm” method="POST" data-netlify="true" id="simple-contact-form" class="contact-form" >
                     <div class="form-row">
@@ -20,6 +21,8 @@
                     <input class="mt-2 btn btn-outline-light" type="submit" value="Submit" class="primary"/>
                 </form>
             </section>
+            <%}%>
+            <%if(!isArtOrAuth){%>
             <section class='col-5'> 
                 <h4>Follow me</h4>
                 <div class="icons pt-2">
@@ -27,8 +30,23 @@
                     <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
                     <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
                 </div>
-                <p class="pt-2">Not a fan of forms? Email me at <a href="mailto:ebandfloww.art@gmail.com">ebandfloww.art@gmail.com</a>.</p>
+                
+                    <p class="pt-2">Not a fan of forms? Email me at <a href="mailto:ebandfloww.art@gmail.com">ebandfloww.art@gmail.com</a>.</p>
+                
             </section>
+            <%} else {%>    
+            <section class='col-5 text-center'> 
+                <h4>Follow me</h4>
+                <div class="icons pt-2">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
+                </div>
+                
+                <p class="pt-2">Email me at <a href="mailto:ebandfloww.art@gmail.com">ebandfloww.art@gmail.com</a>.</p>  
+            </section>   
+            <%}%>
+
             </div>
             <p class="copy m-0">&copy; Bobbi Henderson 2021</p>
         </div>

@@ -2,6 +2,9 @@ const passport = require('passport')
 const validator = require('validator')
 const Art = require('../models/Art')
 const cloudinary = require('../middleware/cloudinary')
+const mailer = require('../middleware/nodeMailer')
+
+require("dotenv").config({ path: "./config/.env" });
 
 const isArtOrAuth = true
 const isBlog = false
@@ -44,6 +47,32 @@ module.exports = {
             const piece = await Art.findById(req.params._id)
 
             res.render('art.ejs', {piece: piece, isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    submitInquiry: async (req, res) =>{
+        try {
+            const name = req.body.name
+            const email = req.body.email
+            const message = req.body.message
+
+            const piece = await Art.findById(req.params._id)
+            
+            const pieceName = piece.name
+            const img = piece.images[0].url
+            
+
+            const info = await mailer.sendMail({
+                to: `${process.env.Email}, ${email}`,
+                subject: `${name} has a question about ${pieceName}`,
+                html: `<h3>${name} asked a question about ${pieceName}!</h3>
+                        <img src="${img}" alt="Event Photo" width="600" height="400">
+                        <p>${message}</p>`
+            })
+            
+            res.redirect('back')
+        
         } catch (err) {
             console.log(err)
         }
