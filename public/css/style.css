@@ -6,7 +6,7 @@ body {
     background-color: #59253A;
     color: white;
     text-align: center;
-    min-height: 100%;
+    height: 100%;
 }
 
 nav {
@@ -40,20 +40,21 @@ a:hover {
     color: #78244c;
     border-radius: 10px;
     box-shadow: 2px 2px;
+    cursor: grab;
 }
 
-.artContainer {
+.availArtContainer, .soldArtContainer {
     background: linear-gradient(to top, #78244c 0%, #895061 100%);
     border-radius: 10px;
 }
 
-.artContainer > .row {
+.availArtContainer > .row, .soldArtContainer > .row {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
 }
 
-.artContainer > .row > .col-xs-4 {
+.availArtContainer > .row > .col-xs-4, .soldArtContainer > .row > .col-xs-4  {
     display: inline-block;
     float: none;
 }
@@ -80,6 +81,11 @@ a:hover {
     text-align: center;
     color: gray;
     font-size: small;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
 @media screen and (max-width: 760px) {

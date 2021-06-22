@@ -2,12 +2,15 @@ const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/Admin')
 
+const isArtOrAuth = true
+const isBlog = false
+
 module.exports = {
     getAdmin: async (req, res) =>{
         if(!req.user) {
             res.redirect('/admin/login')
         } else {
-            res.render('admin.ejs', {isLoggedIn: req.isAuthenticated()})
+            res.render('admin.ejs', {isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
         }
     },
     getLogin: async (req, res) => { 
@@ -15,7 +18,7 @@ module.exports = {
             if (req.user) {
                 return res.redirect('/admin')
             }
-            res.render('login.ejs', {isLoggedIn: req.isAuthenticated()})
+            res.render('login.ejs', {isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
         } catch (err) {
             console.log(err)
         }

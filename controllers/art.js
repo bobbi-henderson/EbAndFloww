@@ -3,12 +3,15 @@ const validator = require('validator')
 const Art = require('../models/Art')
 const cloudinary = require('../middleware/cloudinary')
 
+const isArtOrAuth = true
+const isBlog = false
+
 module.exports = {
     getAddArtForm: (req,res)=>{
         if(!req.user){
             res.redirect('/')
         } else {
-            res.render('addArt.ejs', {isLoggedIn: req.isAuthenticated()})
+            res.render('addArt.ejs', {isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
         }
     }, 
     addArt: async (req,res)=>{
@@ -40,7 +43,7 @@ module.exports = {
         try {
             const piece = await Art.findById(req.params._id)
 
-            res.render('art.ejs', {piece: piece, isLoggedIn: req.isAuthenticated()})
+            res.render('art.ejs', {piece: piece, isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
         } catch (err) {
             console.log(err)
         }

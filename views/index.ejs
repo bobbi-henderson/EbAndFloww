@@ -16,11 +16,11 @@
 </div>
 
 <h2 id="available">Available Art</h2>
-<div class="container artContainer mb-3">
-    <div class="row py-3">
+<div class="container availArtContainer mb-3">
+    <div class="row py-3 avail">
         <%for(let i=0; i<avail.length; i++){%>
             <div class="col-xs-4">
-                <a href="art/<%=avail[i]._id%>">
+                <a onclick="return false" ondblclick="location=this.href" href="art/<%=avail[i]._id%>">
                     <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage mx-3">
                 </a>
             </div>
@@ -30,16 +30,19 @@
 
 <h2 id="sold">Sold Art</h2>
 
-<div class="container artContainer mb-3">
-    <div class="row py-3">
+<div class="container soldArtContainer mb-3">
+    <div class="row py-3 sold">
         <%for(let i=0; i<sold.length; i++){%>
             <div class="col-xs-4">
-                <a href="/art/<%=sold[i]._id%>">
+                <a onclick="return false" ondblclick="location=this.href" href="/art/<%=sold[i]._id%>" class="artLink">
                     <img src="<%=sold[i].images[0].url%>" alt="<%=sold[i].name%> Image" class="img-fluid rounded artImage mx-3">
                 </a>
             </div>
         <%}%>
     </div>
 </div>
+
+<script src="/js/grab.js"></script>
+<script src="/js/doubleClick.js"></script>
 
 <%- include('partials/footer') -%>

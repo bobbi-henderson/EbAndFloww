@@ -25,10 +25,22 @@
     </div>
     <div class="row justify-content-center">
         <p><%=piece.desc%></p>
-        <p>$<%=piece.price%></p>
+        
+    </div>
+    <div class="row justify-content-center">
+        <%if (piece.price) {%>
+            <p>$<%=piece.price%></p>
+       <% } %>
+    </div>
+    <div class="row justify-content-center">
+        <% if (piece.link) {%>
+            <p>Purchase on <a href="<%=piece.link%>">Etsy</a></p>
+        <%}%>
     </div>
 </div>
 
-
+<% if(piece.images.length > 1){%>
+    <script src="/js/changePic.js"></script>
+<%}%>
 
 <%- include('partials/footer') %>
