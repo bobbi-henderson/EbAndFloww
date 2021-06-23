@@ -1,5 +1,5 @@
-let arrowRight = document.querySelector('.fa-arrow-right')
-let arrowLeft = document.querySelector('.fa-arrow-left')
+let arrowRight = document.querySelector('.arrowRight')
+let arrowLeft = document.querySelector('.arrowLeft')
 
 arrowRight.addEventListener('click', nextPicture)
 arrowLeft.addEventListener('click', lastPicture)

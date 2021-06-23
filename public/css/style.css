@@ -34,18 +34,18 @@ a:hover {
     padding-top: 50%;
 }
 
-.aboutContainer {
+.aboutContainer, .pieceContainer {
     background: linear-gradient(to top, #cac9c9 0%, whitesmoke 100%);
     background-color: whitesmoke;
     color: #78244c;
     border-radius: 10px;
     box-shadow: 2px 2px;
-    cursor: grab;
 }
 
-.availArtContainer, .soldArtContainer {
+.availArtContainer, .soldArtContainer, .contactContainer {
     background: linear-gradient(to top, #78244c 0%, #895061 100%);
     border-radius: 10px;
+    cursor: grab;
 }
 
 .availArtContainer > .row, .soldArtContainer > .row {
@@ -59,6 +59,7 @@ a:hover {
     float: none;
 }
 
+
 .artImage { 
     height: 300px;
     width: auto;
@@ -67,6 +68,31 @@ a:hover {
 .artPhoto {
     height: 500px;
     width: auto;
+    cursor: zoom-in;
+}
+
+.scrollableArt {
+    background-color: #2D4159;
+    border-radius: 10px;
+    height: 501px;
+}
+
+.artRow{
+    height: 501px;
+}
+
+.arrowRight, .arrowLeft {
+    height: 500px;
+    line-height: 500px;
+    color: white;
+}
+
+.arrowRight {
+    cursor: e-resize;
+}
+
+.arrowLeft {
+    cursor: w-resize;
 }
 
 #footer {

@@ -3,62 +3,79 @@
 
 <h1><%=piece.name%></h1>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-xs-4">
+<div class="container pieceContainer pt-3 w-75">
+    <div class="row justify-content-center artRow">
+        <div class="col-xs-4 scrollableArt px-1 d-flex">
             <%if(piece.images.length>1){%>
-                <i class="fas fa-arrow-left"></i>
-                <span class="artPics">
+                <div class="arrowLeft d-inline h-100">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+
+                <div class="artPics d-inline px-1">
                     <%for(let i=0; i<piece.images.length; i++) {%>
                         <%if(i===0){%>
-                            <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid rounded artPhoto">   
+                            <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto">   
                         <%} else {%>
-                            <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid rounded artPhoto d-none">   
+                            <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto d-none">   
                         <%}%>
                     <%}%>
-                </span>
-                <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="arrowRight d-inline"> 
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
             <%} else {%>
                 <img src="<%=piece.images[0].url%>" alt="Images of Art" class="img-fluid rounded artPhoto"> 
             <%}%>
         </div>
     </div>
     <div class="row justify-content-center">
-        <p><%=piece.desc%></p>
-        
+        <div class="col-xs-4">
+            <p><%=piece.desc%></p>
+        </div>
     </div>
+    <%if (piece.price) {%>
     <div class="row justify-content-center">
-        <%if (piece.price) {%>
+        <div class="col-xs-4">     
             <p>$<%=piece.price%></p>
-       <% } %>
+        </div>
     </div>
+    <%}%>
+    <%if (piece.link) {%>
     <div class="row justify-content-center">
-        <% if (piece.link) {%>
+        <div class="col-xs-4">         
             <p>Purchase on <a href="<%=piece.link%>">Etsy</a></p>
-        <%}%>
+        </div>
     </div>
+    <%}%>
+</div>
+
+<div class="container contactContainer w-75 my-3 py-2">
     <div class="row justify-content-center">
-        <%if(piece.sold){%>
-            <h4>Do you have a question about this piece or want one like it? <br> Inquire Here:</h4>
-        <%} else {%>
-            <h4>Do you have a question about this piece? Inquire Here:</h4>
-        <%}%>
-        <form method="POST" action="/art/inquiry/<%=piece._id%>" class="w-50">
-            <div class="form-row">
-            <div class="form-group col-6">
-                <input class="form-control" type="text" name="name" id="name" placeholder="Name" />
-            </div>
-            <div class="form-group col-6">
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
-            </div>
-            </div>
-            <div class="form-row">
-            <div class="col">
-                <textarea class="form-control pb-5"  name="message" id="message" placeholder="Message"></textarea>
-            </div>
-            </div>
-            <input class="mt-2 btn btn-outline-light" type="submit" value="Submit" class="primary"/>
-        </form>
+        <div class="col-xs-4">
+            <%if(piece.sold){%>
+                <h4>Do you have a question about this piece or want one like it? <br> Inquire Here:</h4>
+            <%} else {%>
+                <h4>Do you have a question about this piece? Inquire Here:</h4>
+            <%}%>
+            <form method="POST" action="/art/inquiry/<%=piece._id%>" class="">
+                <div class="form-row">
+                <div class="form-group col-6">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Name" />
+                </div>
+                <div class="form-group col-6">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="col">
+                    <textarea class="form-control pb-5"  name="message" id="message" placeholder="Message"></textarea>
+                </div>
+                </div>
+                <input class="mt-2 btn btn-outline-light" type="submit" value="Submit" class="primary"/>
+            </form>
+        </div>
     </div>
 </div>
 
