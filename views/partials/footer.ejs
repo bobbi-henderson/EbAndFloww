@@ -2,7 +2,7 @@
         <div class="container" id="contact">
             <div class="row justify-content-center">
             <%if(!isArtOrAuth){%>
-            <section class="col-7"> 
+            <section class="col-12 col-md-7"> 
                 <h4>Get in touch</h4>
                 <form name=”EmailForm” method="POST" data-netlify="true" id="simple-contact-form" class="contact-form" >
                     <div class="form-row">
@@ -23,7 +23,7 @@
             </section>
             <%}%>
             <%if(!isArtOrAuth){%>
-            <section class='col-5'> 
+            <section class='col-12 col-md-5'> 
                 <h4>Follow me</h4>
                 <div class="icons pt-2">
                     <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
@@ -31,7 +31,7 @@
                     <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
                 </div>
                 
-                    <p class="pt-2">Not a fan of forms? Email me at <a href="mailto:ebandfloww.art@gmail.com">ebandfloww.art@gmail.com</a>.</p>
+                <p class="pt-2">Not a fan of forms? Email me at <a href="mailto:ebandfloww.art@gmail.com">ebandfloww.art@gmail.com</a>.</p>
                 
             </section>
             <%} else {%>    

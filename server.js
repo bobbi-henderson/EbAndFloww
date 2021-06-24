@@ -11,6 +11,7 @@ const path = require('path')
 const homeRoutes = require('./routers/home')
 const authRoutes = require('./routers/auth')
 const artRoutes = require('./routers/art')
+const blogRoutes = require('./routers/blog')
 const PORT = 8000
 
 
@@ -46,6 +47,7 @@ app.use(passport.session())
 app.use('/', homeRoutes)
 app.use('/admin', authRoutes)
 app.use('/art', artRoutes)
+app.use('/blog', blogRoutes)
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server now running on ${PORT}`);

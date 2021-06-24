@@ -74,11 +74,11 @@ a:hover {
 .scrollableArt {
     background-color: #2D4159;
     border-radius: 10px;
-    height: 501px;
+    height: 500px;
 }
 
 .artRow{
-    height: 501px;
+    height: 500px;
 }
 
 .arrowRight, .arrowLeft {
