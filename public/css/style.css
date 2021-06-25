@@ -34,7 +34,7 @@ a:hover {
     padding-top: 50%;
 }
 
-.aboutContainer, .pieceContainer {
+.aboutContainer, .pieceContainer, .blogContainer1 {
     background: linear-gradient(to top, #cac9c9 0%, whitesmoke 100%);
     background-color: whitesmoke;
     color: #78244c;
@@ -42,9 +42,11 @@ a:hover {
     box-shadow: 2px 2px;
 }
 
-.availArtContainer, .soldArtContainer, .contactContainer {
+.availArtContainer, .soldArtContainer, .contactContainer, .blogContainer2 {
     background: linear-gradient(to top, #78244c 0%, #895061 100%);
     border-radius: 10px;
+}
+.availArtContainer, .soldArtContainer {
     cursor: grab;
 }
 
@@ -93,6 +95,10 @@ a:hover {
 
 .arrowLeft {
     cursor: w-resize;
+}
+
+.blogImg {
+    height: 250px;
 }
 
 #footer {

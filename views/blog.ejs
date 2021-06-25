@@ -1,13 +1,22 @@
 <%- include('partials/header') %>
 
-<div class="container">
+<div class="container my-4 text-center w-50">
     <%for(let i=0; i<posts.length; i++){%>
-    <div class="row">
-        <div class="col">
-            <h3><%=posts[i].title%></h3>
-            <img src="<%=posts[i].image%>" alt="Blog Post Image">
-        </div>
-    </div>
+        <%if(i%2!==0){%>
+            <div class="row blogContainer1 my-3 p-3">
+                <div class="col">                  
+                    <img class="d-inline blogImg mr-5" src="<%=posts[i].image%>" alt="Blog Post Image">
+                    <h3 class="d-inline"><%=posts[i].title%></h3>
+                </div>
+            </div>
+        <%} else {%>
+            <div class="row blogContainer2 my-3 p-3">
+                <div class="col">
+                    <h3 class="d-inline mr-5"><%=posts[i].title%></h3>
+                    <img class="d-inline blogImg" src="<%=posts[i].image%>" alt="Blog Post Image">
+                </div>
+            </div>
+        <%}%>
     <%}%>    
 </div>
 
