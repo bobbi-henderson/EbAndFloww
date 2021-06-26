@@ -25,6 +25,10 @@ a:hover {
     display: none;
 }
 
+.container {
+    margin-top: 1.5em;
+}
+
 .jumbotron {
     background-image: url('/images/Eb&FlowwHeader.jpeg');
     background-position: top center;
