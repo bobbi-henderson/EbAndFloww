@@ -43,6 +43,15 @@ module.exports = {
         } catch(err) {
             console.log(err)
         }
+    },
+    getBlogPost: async (req, res)=>{
+        try {
+            const post = await Blog.findById(req.params._id)
+
+            res.render('blogPost.ejs', {post: post, isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
+        } catch(err) {
+            console.log(err)
+        }
     }
 }
 

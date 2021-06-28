@@ -76,5 +76,47 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
+    }, 
+    updateText: async (req, res)=>{
+        try {
+            console.log(req.body.name)
+            await Art.findOneAndUpdate({_id: req.params._id}, {
+                $set: {
+                    name: req.body.name,
+                    desc: req.body.desc,
+                    link: req.body.link,
+                    price: req.body.price
+                }
+            })
+            res.redirect('back')
+        } catch(err){
+            console.log(err)
+        }
+    }, 
+    markSold: async (req, res)=>{
+        try {
+            await Art.findOneAndUpdate({_id: req.params._id}, {
+                $set: {
+                    sold: true,
+                }
+            })
+
+            res.redirect('back')
+        } catch(err) {
+            console.log(err)
+        }
+    },
+    markUnsold: async (req, res) =>{
+        try {
+            await Art.findOneAndUpdate({_id: req.params._id}, {
+                $set: {
+                    sold: false,
+                }
+            })
+
+            res.redirect('back')
+        } catch(err) {
+            console.log(err)
+        }
     }
 }

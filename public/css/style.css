@@ -17,6 +17,10 @@ a {
     color: gray;
 }
 
+ul {
+    list-style-type: none;
+}
+
 a:hover {
     color: black;
 }
@@ -38,7 +42,7 @@ a:hover {
     padding-top: 50%;
 }
 
-.aboutContainer, .pieceContainer, .blogContainer1 {
+.aboutContainer, .pieceContainer, .blogContainer1, .postContainer {
     background: linear-gradient(to top, #cac9c9 0%, whitesmoke 100%);
     background-color: whitesmoke;
     color: #78244c;
@@ -103,6 +107,10 @@ a:hover {
 
 .blogImg {
     height: 250px;
+}
+
+.blogBody {
+    white-space: pre-line;
 }
 
 #footer {

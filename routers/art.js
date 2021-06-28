@@ -8,5 +8,8 @@ router.get('/addArt', artController.getAddArtForm)
 router.post('/addArt', upload.array('files', 4), artController.addArt)
 router.get('/:_id', artController.getArt)
 router.post('/inquiry/:_id', artController.submitInquiry)
+router.put('/updateText/:_id', artController.updateText)
+router.put('/markSold/:_id', artController.markSold)
+router.put('/markUnsold/:_id', artController.markUnsold)
 
 module.exports = router

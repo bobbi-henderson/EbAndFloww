@@ -1,1 +1,18 @@
-t
+<%- include('partials/header') %>
+
+<h1 class="pt-2 mb-0"><%=post.title%></h1>
+
+<div class="container my-4 text-center w-50 mt-0 postContainer">
+    <div class="row">
+        <div class="col">
+            <img src="<%=post.image%>" alt="Blog Post Image" class="img img-fluid rounded my-2">
+            <p class="blogBody text-left">
+                <%=post.body%>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('partials/footer') %>
