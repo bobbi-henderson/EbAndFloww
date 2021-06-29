@@ -1,5 +1,6 @@
-function toggleForm() {
-    let form = document.querySelector('.editForm')
+function toggleForm(toggle) {
+    console.log(toggle)
+    let form = document.querySelector(toggle)
     if(form.classList.contains('d-none')){
         form.classList.remove('d-none')
     } else {    

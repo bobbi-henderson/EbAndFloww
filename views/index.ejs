@@ -1,12 +1,12 @@
 <%- include('partials/header') -%>
 
-<div class="jumbotron">
+<div class="jumbotron mb-3 mt-2">
 
 </div>
 
 
 <h2 id="about">About Me</h2>
-<div class="container aboutContainer my-3">
+<div class="container aboutContainer my-3 mt-1">
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat cumque nostrum praesentium! Consequatur non eaque, voluptate eos totam repellat, doloribus, nesciunt omnis est dolor sint. Facere voluptas fugit debitis aliquid? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam dolores eaque repellat at explicabo quibusdam velit eveniet et deserunt, illum veniam est, minus cumque! Quae laboriosam, iste harum expedita ad possimus praesentium vel nostrum quasi nobis dicta aspernatur excepturi sequi error. Sint cumque vel veniam ex distinctio rerum placeat commodi quis voluptas nulla natus non, a suscipit atque beatae, deserunt, impedit nam temporibus. Vero ad doloribus laboriosam repellendus, esse, suscipit aliquid animi, eos quisquam ex fugiat veritatis unde libero? Voluptate unde, error tempora quisquam ut iste qui omnis cupiditate, nam corrupti atque aliquam cum laboriosam dicta nihil dolor maiores ducimus!</p>
     <p>Molestias, cupiditate voluptatum! Dolore accusantium nesciunt adipisci tempora quaerat. Voluptate aut tenetur unde, odio rerum rem numquam facilis dolore, fugit consequuntur, tempora sint. Mollitia laudantium accusantium dignissimos! In, nihil dolorem?</p>
     <p>Dolore, animi ullam. Deserunt veritatis laborum voluptate consectetur sit dolorum placeat officia praesentium, ullam ad inventore provident esse ipsam harum ratione repellendus fuga. Animi impedit esse provident vel, necessitatibus officiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus doloremque perspiciatis esse laudantium rerum voluptates nesciunt, mollitia temporibus saepe soluta iste perferendis necessitatibus atque provident?</p>
@@ -16,33 +16,35 @@
 </div>
 
 <h2 id="available">Available Art</h2>
-<div class="container availArtContainer mb-3">
+<div class="container availArtContainer mb-3 mt-1">
     <div class="row py-3 avail">
         <%for(let i=0; i<avail.length; i++){%>
-            <div class="col-xs-4">
+            <div class="col-xs-4 artHome mx-3">
                 <a onclick="return false" ondblclick="location=this.href" href="art/<%=avail[i]._id%>">
-                    <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage mx-3">
+                    <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage">
                 </a>
+                <p class="dblClickBanner">Double Click to See Info</p>
             </div>
         <%}%>
     </div>
 </div>
+
 
 <h2 id="sold">Sold Art</h2>
 
-<div class="container soldArtContainer mb-3">
+<div class="container soldArtContainer mb-3 mt-1">
     <div class="row py-3 sold">
         <%for(let i=0; i<sold.length; i++){%>
-            <div class="col-xs-4">
+            <div class="col-xs-4 artHome rounded mx-3">
                 <a onclick="return false" ondblclick="location=this.href" href="/art/<%=sold[i]._id%>" class="artLink">
-                    <img src="<%=sold[i].images[0].url%>" alt="<%=sold[i].name%> Image" class="img-fluid rounded artImage mx-3">
+                    <img src="<%=sold[i].images[0].url%>" alt="<%=sold[i].name%> Image" class="img-fluid rounded artImage">
                 </a>
+                <p class="dblClickBanner">Double Click to See Info</p>
             </div>
         <%}%>
     </div>
 </div>
 
-<script src="/js/grab.js"></script>
-<script src="/js/doubleClick.js"></script>
+
 
 <%- include('partials/footer') -%>

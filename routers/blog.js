@@ -8,5 +8,6 @@ router.get('/addPost', blogController.getAddPost)
 router.post('/addPost', upload.single('file'), blogController.addPost)
 router.get('/', blogController.getBlog)
 router.get('/:_id', blogController.getBlogPost)
+router.put('/updateText/:_id', blogController.updateText)
 
 module.exports = router

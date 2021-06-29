@@ -118,5 +118,41 @@ module.exports = {
         } catch(err) {
             console.log(err)
         }
+    }, 
+    addPhotos: async (req, res)=>{
+        try {
+            let images = []
+            let files = req.files
+
+            for (let i=0; i<files.length; i++){
+                const result = await cloudinary.uploader.upload(files[i].path)
+
+                images.push({url: result.secure_url, cloudinaryID: result.public_id})
+            }
+
+            await Art.findOneAndUpdate({_id: req.params._id}, {
+                $addToSet: {
+                    images: images,
+                }
+            })
+
+            res.redirect('back')
+        } catch(err) {
+            console.log(err)
+        }
+    },
+    deletePhoto: async (req, res)=>{
+        try {
+            await cloudinary.uploader.destroy(req.params._imgID)
+            await Art.findOneAndUpdate({_id: req.params._id}, {
+                $pull: {
+                    images: {cloudinaryID: req.params._imgID}
+                }
+            })
+
+            res.redirect('back')
+        } catch(err) {
+            console.log(err) 
+        }
     }
 }

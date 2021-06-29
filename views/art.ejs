@@ -5,38 +5,65 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <button class="btn btn-outline-light" id="edit" onClick="toggleForm()">EDIT TEXT</button>
+                <button class="btn btn-outline-light" id="edit" onClick="toggleForm('.editText')">EDIT TEXT</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="containter editText d-none pt-2">
+        <div class="row justify-content-center mr-0">
+            <div class="col-11 col-sm-10 col-md-7 col-lg-5">
+                <h1>Update Text</h1>
+                <form action="/art/updateText/<%=piece._id%>?_method=PUT" method="POST" class="p-3">
+                    <div class="form-group mx-2">
+                        <label for="name" class="">Name of Piece</label>
+                        <input type="text" name="name" id="name" class="form-control" value="<%=piece.name%>" required>
+                    </div>
+                    <div class="form-group mx-2">
+                        <label for="desc" class="">Description of the Piece</label>
+                        <textarea name="desc" id="desc" cols="30" rows="3" class="form-control" required><%=piece.desc%></textarea>
+                    </div>
+                    <div class="form-group mx-2">
+                        <label for="link" class="">Etsy Link</label>
+                        <input type="text" name="link" id="link" class="form-control" value="<%=piece.link%>">
+                    </div>
+                    <div class="form-group mx-2">
+                        <label for="price" class="">Price</label>
+                        <input type="number" name="price" id="price" class="form-control" value="<%=piece.price%>">
+                    </div>
+                    <button type="submit" class="btn btn-outline-light">Submit</button>
+                </form>
             </div>
         </div>
     </div>
 <%}%>
 
-<div class="containter editForm d-none">
-    <div class="row justify-content-center mr-0">
-        <div class="col-11 col-sm-10 col-md-7 col-lg-5">
-            <h1>Add Art</h1>
-            <form action="/art/updateText/<%=piece._id%>?_method=PUT" method="POST" class="p-3">
-                <div class="form-group mx-2">
-                    <label for="name" class="">Name of Piece</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<%=piece.name%>" required>
-                </div>
-                <div class="form-group mx-2">
-                    <label for="desc" class="">Description of the Piece</label>
-                    <textarea name="desc" id="desc" cols="30" rows="3" class="form-control" required><%=piece.desc%></textarea>
-                </div>
-                <div class="form-group mx-2">
-                    <label for="link" class="">Etsy Link</label>
-                    <input type="text" name="link" id="link" class="form-control" value="<%=piece.link%>">
-                </div>
-                <div class="form-group mx-2">
-                    <label for="price" class="">Price</label>
-                    <input type="number" name="price" id="price" class="form-control" value="<%=piece.price%>">
-                </div>
-                <button type="submit" class="btn btn-outline-light">Submit</button>
-              </form>
+<% if(isLoggedIn){%>
+    <div class="container d-inline">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-outline-light" id="edit" onClick="toggleForm('.editPhotos')">ADD PHOTOS</button>
+            </div>
         </div>
     </div>
-</div>
+
+
+    <div class="containter d-none editPhotos pt-2">
+        <div class="row justify-content-center mr-0">
+            <div class="col-11 col-sm-10 col-md-7 col-lg-5">
+                <h1>Add Photos</h1>
+                <form action="/art/addPhotos/<%=piece._id%>?_method=PUT" enctype="multipart/form-data" method="POST" class="p-3">
+                    <div class="form-group mx-2"> 
+                        <label for="files" class="">Art Photo</label>
+                        <input type="file" name="files" id="files" class="form-control" multiple required>
+                    </div>
+                    <button type="submit" class="btn btn-outline-light">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<%}%>
 
 <div class="container pieceContainer pt-3 w-75 mt-3">
     <div class="row">
@@ -45,8 +72,8 @@
         </div>
     </div>
     <div class="row justify-content-center artRow">
-        <div class="col-xs-4 scrollableArt px-1 d-flex">
-            <%if(piece.images.length>1){%>
+        <%if(piece.images.length>1){%>
+            <div class="col-xs-4 scrollableArt px-1 d-flex">
                 <div class="arrowLeft d-inline h-100">
                     <i class="fas fa-arrow-left"></i>
                 </div>
@@ -54,12 +81,26 @@
                 <ul class="artPics d-inline px-1">
                     <%for(let i=0; i<piece.images.length; i++) {%>
                         <%if(i===0){%>    
-                            <li>
-                                <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto">  
+                            <li class="imgList">
+                                <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto">
+                                <%if(isLoggedIn){%>
+                                    <form action="/art/deletePhoto/<%=piece._id%>/<%=piece.images[i].cloudinaryID%>?_method=DELETE" method="POST" class="deleteButton">
+                                        <button class="btn btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                <%}%>
                             </li>
                         <%} else {%>
-                            <li>
-                                <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto d-none">  
+                            <li class="d-none imgList">
+                                <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto">
+                                <%if(isLoggedIn){%>
+                                    <form action="/art/deletePhoto/<%=piece._id%>/<%=piece.images[i].cloudinaryID%>?_method=DELETE" method="POST" class="deleteButton">
+                                        <button class="btn btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                <%}%>
                             </li>
                         <%}%>
                     <%}%>
@@ -68,13 +109,16 @@
                 <div class="arrowRight d-inline"> 
                     <i class="fas fa-arrow-right"></i>
                 </div>
+            </div>
+            
 
-            <%} else {%>
+        <%} else {%>
+            <div class="col-xs-4 px-1 d-flex imgList">
                 <a href="<%=piece.images[0].url%>" data-lightbox="artPhotos" data-title="Photo of <%=piece.name%>">
-                    <img src="<%=piece.images[0].url%>" alt="Images of Art" class="img-fluid artPhoto">   
+                    <img src="<%=piece.images[0].url%>" alt="Images of Art" class="img-fluid artPhoto rounded">   
                 </a>
-            <%}%>
-        </div>
+            </div>
+        <%}%>
     </div>
     <div class="row justify-content-center">
         <div class="col-xs-4">
@@ -135,10 +179,5 @@
         </div>
     </div>
 </div>
-
-<% if(piece.images.length > 1){%>
-    <script src="/js/changePic.js"></script>
-<%}%>
-<script src="/js/toggleForm.js"></script>
 
 <%- include('partials/footer') %>

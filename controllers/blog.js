@@ -52,6 +52,21 @@ module.exports = {
         } catch(err) {
             console.log(err)
         }
+    }, 
+    updateText: async (req, res)=>{
+        try {
+            await Blog.findByIdAndUpdate({_id: req.params._id}, {
+                $set: {
+                    title: req.body.title,
+                    body: req.body.body,
+                    link: req.body.link
+                }
+            })
+
+            res.redirect('back')
+        } catch(err) {
+            console.log(err)
+        }
     }
 }
 

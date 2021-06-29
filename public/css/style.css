@@ -43,7 +43,7 @@ a:hover {
 }
 
 .aboutContainer, .pieceContainer, .blogContainer1, .postContainer {
-    background: linear-gradient(to top, #cac9c9 0%, whitesmoke 100%);
+    background: linear-gradient(to top, #d8d0df 0%, whitesmoke 100%);
     background-color: whitesmoke;
     color: #78244c;
     border-radius: 10px;
@@ -69,16 +69,39 @@ a:hover {
     float: none;
 }
 
-
 .artImage { 
     height: 300px;
     width: auto;
+    margin: 0;
+}
+
+.artHome {
+    position: relative;
+    border-radius: 10px;
+}
+
+.dblClickBanner {
+    position: absolute;
+    top: 2%; 
+    left: 5%;
+    background-color: #2D4159;
+    width: 90%;
+    border-radius: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.4s linear;
+}
+
+.artHome:hover .dblClickBanner {
+    visibility: visible;
+    opacity: 1;
 }
 
 .artPhoto {
     height: 500px;
     width: auto;
     cursor: zoom-in;
+    z-index: 1;
 }
 
 .scrollableArt {
@@ -119,6 +142,17 @@ a:hover {
     padding-top: 1em;
     margin-top: auto;
     text-align: start;
+}
+
+.imgList {
+    position: relative;
+}
+
+.deleteButton {
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    color: white;
 }
 
 .copy {

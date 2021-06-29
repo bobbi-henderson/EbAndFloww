@@ -5,15 +5,19 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-sold.addEventListener('mousedown', mouseDownHandler);
-sold.addEventListener('mouseleave', mouseLeaveHandler);
-sold.addEventListener('mouseup', mouseUpHandler);
-sold.addEventListener('mousemove', mouseMoveHandler);
+if(sold){
+    sold.addEventListener('mousedown', mouseDownHandler);
+    sold.addEventListener('mouseleave', mouseLeaveHandler);
+    sold.addEventListener('mouseup', mouseUpHandler);
+    sold.addEventListener('mousemove', mouseMoveHandler);
+}
 
-avail.addEventListener('mousedown', mouseDownHandler);
-avail.addEventListener('mouseleave', mouseLeaveHandler);
-avail.addEventListener('mouseup', mouseUpHandler);
-avail.addEventListener('mousemove', mouseMoveHandler);
+if(avail){
+    avail.addEventListener('mousedown', mouseDownHandler);
+    avail.addEventListener('mouseleave', mouseLeaveHandler);
+    avail.addEventListener('mouseup', mouseUpHandler);
+    avail.addEventListener('mousemove', mouseMoveHandler);
+}
 
 function mouseDownHandler(e){
     isDown = true;

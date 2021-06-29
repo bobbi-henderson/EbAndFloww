@@ -24,6 +24,7 @@
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.14",
     "multer": "^1.4.2",
+    "node-popup": "^0.1.14",
     "nodemailer": "^6.6.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
