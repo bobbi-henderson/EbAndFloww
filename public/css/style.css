@@ -7,6 +7,12 @@ body {
     color: white;
     text-align: center;
     height: 100%;
+    /* font-family: 'Abril Fatface', cursive; */
+    font-family: 'Yeseva One', cursive;
+}
+
+p {
+    font-size: 17px;
 }
 
 nav {
@@ -15,6 +21,10 @@ nav {
 
 a {
     color: gray;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 ul {
@@ -126,6 +136,10 @@ a:hover {
 
 .arrowLeft {
     cursor: w-resize;
+}
+
+.blogTitle {
+    line-height: 100%;
 }
 
 .blogImg {
