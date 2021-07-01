@@ -93,9 +93,9 @@ a:hover {
 .dblClickBanner {
     position: absolute;
     top: 2%; 
-    left: 5%;
+    left: 3%;
     background-color: #2D4159;
-    width: 90%;
+    width: 94%;
     border-radius: 10px;
     visibility: hidden;
     opacity: 0;
@@ -146,7 +146,7 @@ a:hover {
     height: 250px;
 }
 
-.blogBody {
+.blogBody, .aboutContainer {
     white-space: pre-line;
 }
 
@@ -189,6 +189,14 @@ a:hover {
 @media screen and (max-width: 575px) {
     .jumbotron {
         height: 20em;
+    }
+
+    .aboutContainer, .pieceContainer, .blogContainer1, .postContainer {
+        width: 100%;
+    }
+    
+    .availArtContainer, .soldArtContainer, .contactContainer, .blogContainer2 {
+        width: 100%;
     }
 }
 
