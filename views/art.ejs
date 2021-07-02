@@ -25,6 +25,10 @@
                         <textarea name="desc" id="desc" cols="30" rows="3" class="form-control" required><%=piece.desc%></textarea>
                     </div>
                     <div class="form-group mx-2">
+                        <label for="series" class="">Series</label>
+                        <input type="text" name="series" id="series" class="form-control" value="<%=piece.series%>">
+                    </div>
+                    <div class="form-group mx-2">
                         <label for="link" class="">Etsy Link</label>
                         <input type="text" name="link" id="link" class="form-control" value="<%=piece.link%>">
                     </div>
@@ -132,6 +136,13 @@
         </div>
     </div>
     <%}%>
+    <%if (piece.series) {%>
+        <div class="row justify-content-center">
+            <div class="col-xs-4">     
+                <p>This piece is a part of the <%=piece.series%> series</p>
+            </div>
+        </div>
+        <%}%>
     <%if (piece.link) {%>
         <div class="row justify-content-center">
             <div class="col-xs-4">         

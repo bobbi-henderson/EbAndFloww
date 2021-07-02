@@ -6,6 +6,7 @@ const ArtSchema = new mongoose.Schema({
   desc: {type: String},
   price: {type: Number},
   link: {type: String},
+  series: {type: String},
   date: {type: Date, default: Date.now},
   sold: {type: Boolean, default: false},
 })

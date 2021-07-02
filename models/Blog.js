@@ -6,7 +6,7 @@ const BlogSchema = new mongoose.Schema({
   cloudinaryID: {type: String},
   body: {type: String},
   date: {type: Date, default: Date.now},
-  link: {type: String}
+  link: {type: Array}
 })
 
 BlogSchema.index({'$**': 'text'})

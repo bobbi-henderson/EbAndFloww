@@ -34,6 +34,7 @@ module.exports = {
                 images: images,
                 link: req.body.link,
                 price: req.body.price,
+                series: req.body.series,
                 sold: (req.body.sold === 'on'),
             })
 
@@ -85,7 +86,8 @@ module.exports = {
                     name: req.body.name,
                     desc: req.body.desc,
                     link: req.body.link,
-                    price: req.body.price
+                    price: req.body.price,
+                    series: req.body.series,
                 }
             })
             res.redirect('back')
