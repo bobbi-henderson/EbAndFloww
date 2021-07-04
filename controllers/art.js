@@ -157,5 +157,19 @@ module.exports = {
         } catch(err) {
             console.log(err) 
         }
+    }, 
+    deletePiece: async (req, res)=>{
+        try {
+            const piece = await Art.findById({_id: req.params._id})
+            for(let i=0; i<piece.images.length; i++){
+                await cloudinary.uploader.destroy(piece.images[i].cloudinaryID)
+            }
+
+            await Event.deleteOne({_id: req.params._id})
+
+            res.redirect('/')
+        } catch(err) {
+            console.log(err)
+        }
     }
 }

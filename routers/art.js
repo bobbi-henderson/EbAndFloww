@@ -13,5 +13,6 @@ router.put('/markSold/:_id', artController.markSold)
 router.put('/markUnsold/:_id', artController.markUnsold)
 router.put('/addPhotos/:_id', upload.array('files', 4), artController.addPhotos)
 router.delete('/deletePhoto/:_id/:_imgID', artController.deletePhoto)
+router.delete('/deletePiece/:_id', artController.deletePiece)
 
 module.exports = router

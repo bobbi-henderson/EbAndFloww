@@ -12,7 +12,7 @@
         <div class="row mb-3">
             <div class="col">
                 <button class="btn btn-outline-light" id="edit" onClick="toggleForm('.editText')">EDIT TEXT</button>
-                <form action="/art/delete/<%=piece._id%>?_method=DELETE" method="POST" class="float-left">
+                <form action="/art/deletePiece/<%=piece._id%>?_method=DELETE" method="POST" class="float-left">
                     <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">
                         <i class="fas fa-trash"></i>
                     </button>
