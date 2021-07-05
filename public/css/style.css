@@ -52,6 +52,10 @@ a:hover {
     padding-top: 50%;
 }
 
+#artistImage {
+    height: 400px;
+}
+
 .aboutContainer, .pieceContainer, .blogContainer1, .postContainer {
     background: linear-gradient(to top, #d8d0df 0%, whitesmoke 100%);
     background-color: whitesmoke;
@@ -120,10 +124,6 @@ a:hover {
     height: 500px;
 }
 
-.artRow{
-    height: 500px;
-}
-
 .arrowRight, .arrowLeft {
     height: 500px;
     line-height: 500px;
@@ -175,14 +175,32 @@ a:hover {
     font-size: small;
 }
 
+.image-wrapper {
+    float: left;
+    padding-right: 2em;
+}
+
+.aboutContainer > .row {
+    margin-bottom: 2em;
+}
+
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 800px) {
     .jumbotron {
         height: 30em;
+    }
+    .image-wrapper {
+        display: block;
+        float: none;
+        padding-right: 0;
+    }
+
+    .aboutContainer > .row {
+        margin-bottom: 0;
     }
 }
 
@@ -198,10 +216,36 @@ a:hover {
     .availArtContainer, .soldArtContainer, .contactContainer, .blogContainer2 {
         width: 100%;
     }
+
+    .artPhoto { 
+        height: 300px;
+    }
+    
+    .scrollableArt {
+        height: 300px;
+    }
+
+    .arrowRight, .arrowLeft {
+        height: 300px;
+        line-height: 300px;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .jumbotron {
         height: 16em;
+    }
+
+    .artPhoto { 
+        height: 250px;
+    }
+    
+    .scrollableArt {
+        height: 250px;
+    }
+
+    .arrowRight, .arrowLeft {
+        height: 250px;
+        line-height: 250px;
     }
 }

@@ -4,7 +4,12 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <button class="btn btn-outline-light" id="edit" onClick="toggleForm('.editText')">EDIT TEXT</button>
+                <button class="btn btn-outline-light float-right" id="edit" onClick="toggleForm('.editText')">EDIT TEXT</button>
+                <form action="/blog/deletePost/<%=post._id%>?_method=DELETE" method="POST" class="float-left">
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -44,6 +49,13 @@
             <p class="blogBody text-left">
                 <%=post.body%>
             </p>
+            <%if(post.link){%>
+                <h5>Related Links</h5>
+                <%for(let i=0; i<post.link.length;i++){%>
+                    <a href="<%=post.link[i]%>" target="_blank" rel="noreferrer noopener"><%=post.link[i]%></a>
+                    <br>
+                <%}%>
+            <%}%>    
         </div>
     </div>
 </div>

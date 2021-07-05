@@ -19,7 +19,7 @@ module.exports = {
     }, 
     addPost: async (req,res)=>{
         try {
-            console.log(req.file)
+            const links = await (req.body.link).split(',').map((link)=>{return link.trim()})
             const result = await cloudinary.uploader.upload(req.file.path)
 
             await Blog.create({
@@ -27,7 +27,7 @@ module.exports = {
                 image: result.secure_url,
                 cloudinaryID: result.public_id,
                 body: req.body.body,
-                link: req.body.link
+                link: links,
             })
 
             res.redirect('/')
@@ -64,6 +64,17 @@ module.exports = {
             })
 
             res.redirect('back')
+        } catch(err) {
+            console.log(err)
+        }
+    },
+    deletePost: async (req, res)=>{
+        try {
+            const post = await Blog.findById({_id: req.params._id})
+            await cloudinary.uploader.destroy(post.cloudinaryID)
+            await Blog.findByIdAndDelete({_id: req.params._id})
+
+            res.redirect('/blog')
         } catch(err) {
             console.log(err)
         }

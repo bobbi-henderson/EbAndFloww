@@ -6,14 +6,21 @@
 
 
 <h2 id="about" class="pt-5">About Me</h2>
-<div class="container aboutContainer mb-3 mt-0 text-left py-2">
-    <p>
-        Artist and creator Ebony Charity, also known as “Eb”, is an Orlando, FL native and University of Central Florida Alumni. Back in 2018, she noticed manufactured art in retail stores and decided to begin creating original abstract artwork on my own.
-
-        Inspired by the literal term, Eb&Floww is a collection of original abstract art pieces on canvas using acrylic paint and liquid mediums. The natural flow of liquified paint is then tilted in a rhythmical pattern of coming and going, also demonstrating a decline and regrowth.
-        
-        All current artwork available for purchase is currently listed on Instagram @ebandflowwart!
-    </p>
+<div class="container aboutContainer mb-3 d-flex">
+    <div class="row align-items-start pb-3">
+        <div class="col align-items-start">
+            <div class="image-wrapper">
+                <img src="/images/ebs.jpg" alt="Picture of the Artist, Ebony" class="rounded img img-fluid" id="artistImage">
+            </div>
+            <div class="content-wrapper text-left">
+                <p class="align-self-start">Artist and creator Ebony Charity, also known as “Eb”, is an Orlando, FL native and University of Central Florida Alumni. Back in 2018, she noticed manufactured art in retail stores and decided to begin creating original abstract artwork on my own.
+            
+                    Inspired by the literal term, Eb&Floww is a collection of original abstract art pieces on canvas using acrylic paint and liquid mediums. The natural flow of liquified paint is then tilted in a rhythmical pattern of coming and going, also demonstrating a decline and regrowth.
+                    
+                    All current artwork available for purchase is currently listed on Instagram @ebandflowwart!</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <h2 id="available" class="pt-5">Available Art</h2>
@@ -33,7 +40,7 @@
 
 <h2 id="sold" class="pt-5">Sold Art</h2>
 
-<div class="container soldArtContainer mb-3 mt-1">
+<div class="container soldArtContainer mb-5 mt-1">
     <div class="row py-3 sold">
         <%for(let i=0; i<sold.length; i++){%>
             <div class="col-xs-4 artHome rounded mx-3">
