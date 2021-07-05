@@ -165,7 +165,7 @@ module.exports = {
                 await cloudinary.uploader.destroy(piece.images[i].cloudinaryID)
             }
 
-            await Event.deleteOne({_id: req.params._id})
+            await Art.deleteOne({_id: req.params._id})
 
             res.redirect('/')
         } catch(err) {
