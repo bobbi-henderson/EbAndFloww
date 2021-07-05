@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "browserify": "^17.0.0",
     "cloudinary": "^1.26.0",
     "connect-mongo": "^4.4.1",
     "dotenv": "^10.0.0",
@@ -32,6 +33,9 @@
     "viewerjs": "^1.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babelify": "^10.0.0",
     "nodemon": "^2.0.7"
   }
 }

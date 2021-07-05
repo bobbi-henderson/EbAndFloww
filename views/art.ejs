@@ -1,11 +1,23 @@
 <%- include('partials/header') %>
 
 
+
 <% if(isLoggedIn){%>
+    <div class="float-left text-left">
+
+    </div>
+
+
     <div class="container">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col">
                 <button class="btn btn-outline-light" id="edit" onClick="toggleForm('.editText')">EDIT TEXT</button>
+                <form action="/art/delete/<%=piece._id%>?_method=DELETE" method="POST" class="float-left">
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+                <button class="btn btn-outline-light float-right" id="edit" onClick="toggleForm('.editPhotos')">ADD PHOTOS</button>
             </div>
         </div>
     </div>
@@ -41,14 +53,9 @@
             </div>
         </div>
     </div>
-<%}%>
-
-<% if(isLoggedIn){%>
     <div class="container d-inline">
         <div class="row">
-            <div class="col">
-                <button class="btn btn-outline-light" id="edit" onClick="toggleForm('.editPhotos')">ADD PHOTOS</button>
-            </div>
+
         </div>
     </div>
 
@@ -82,14 +89,14 @@
                     <i class="fas fa-arrow-left"></i>
                 </div>
 
-                <ul class="artPics d-inline px-1">
+                <ul class="artPics d-inline px-1" id="images">
                     <%for(let i=0; i<piece.images.length; i++) {%>
                         <%if(i===0){%>    
                             <li class="imgList">
                                 <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto">
                                 <%if(isLoggedIn){%>
                                     <form action="/art/deletePhoto/<%=piece._id%>/<%=piece.images[i].cloudinaryID%>?_method=DELETE" method="POST" class="deleteButton">
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -100,7 +107,7 @@
                                 <img src="<%=piece.images[i].url%>" alt="Images of Art" class="img-fluid artPhoto">
                                 <%if(isLoggedIn){%>
                                     <form action="/art/deletePhoto/<%=piece._id%>/<%=piece.images[i].cloudinaryID%>?_method=DELETE" method="POST" class="deleteButton">
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -118,9 +125,7 @@
 
         <%} else {%>
             <div class="col-xs-4 px-1 d-flex imgList">
-                <a href="<%=piece.images[0].url%>" data-lightbox="artPhotos" data-title="Photo of <%=piece.name%>">
-                    <img src="<%=piece.images[0].url%>" alt="Images of Art" class="img-fluid artPhoto rounded">   
-                </a>
+                <img src="<%=piece.images[0].url%>" alt="Images of Art" class="img-fluid artPhoto rounded" id="image">   
             </div>
         <%}%>
     </div>

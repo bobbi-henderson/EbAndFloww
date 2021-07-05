@@ -1,6 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const Art = require('../models/Art')
+const viewer = require('viewerjs')
 const cloudinary = require('../middleware/cloudinary')
 const mailer = require('../middleware/nodeMailer')
 
