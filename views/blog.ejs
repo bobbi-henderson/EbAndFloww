@@ -2,27 +2,37 @@
 
 
 <div class="container my-4 text-center w-50 mt-5">
-    <%for(let i=0; i<posts.length; i++){%>
-        <%if(i%2==0){%>
-            <a href="blog/<%=posts[i]._id%>">
-                <div class="row blogContainer1 my-3 p-3">
-                    <div class="col d-flex justify-content-around">                  
-                        <img class="d-inline blogImg" src="<%=posts[i].image%>" alt="Blog Post Image">
-                        <h3 class="d-inline align-self-center"><%=posts[i].title%></h3>
+    <%if(posts.length > 0){%>
+        <%for(let i=0; i<posts.length; i++){%>
+            <%if(i%2==0){%>
+                <a href="blog/<%=posts[i]._id%>">
+                    <div class="row blogContainer1 my-3 p-3">
+                        <div class="col d-flex justify-content-around">                  
+                            <img class="d-inline blogImg" src="<%=posts[i].image%>" alt="Blog Post Image">
+                            <h3 class="d-inline align-self-center"><%=posts[i].title%></h3>
+                        </div>
                     </div>
-                </div>
-            </a>
-        <%} else {%>
-            <a href="blog/<%=posts[i]._id%>">
-                <div class="row blogContainer2 my-3 p-3" href="blog/<%=posts[i]._id%>">
-                    <div class="col d-flex justify-content-around">
-                        <h3 class="d-inline align-self-center"><%=posts[i].title%></h3>
-                        <img class="d-inline blogImg" src="<%=posts[i].image%>" alt="Blog Post Image">
+                </a>
+            <%} else {%>
+                <a href="blog/<%=posts[i]._id%>">
+                    <div class="row blogContainer2 my-3 p-3" href="blog/<%=posts[i]._id%>">
+                        <div class="col d-flex justify-content-around">
+                            <h3 class="d-inline align-self-center"><%=posts[i].title%></h3>
+                            <img class="d-inline blogImg" src="<%=posts[i].image%>" alt="Blog Post Image">
+                        </div>
                     </div>
-                </div>
-            </a>
-        <%}%>
-    <%}%>    
+                </a>
+            <%}%>
+        <%}%>    
+    <%} else {%>
+        <div class="row blogContainer2 my-3 p-3">
+            <div class="col">
+                <h3 class="d-inline">No Posts Yet</h3>
+                <br>
+                <p>Please check back later!</p>
+            </div>
+        </div>
+    <%}%>
 </div>
 
 
