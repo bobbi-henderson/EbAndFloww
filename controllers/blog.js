@@ -1,6 +1,6 @@
 const passport = require('passport')
 const validator = require('validator')
-const Blog = require('../models/blog')
+const Blog = require('../models/Blog')
 const cloudinary = require('../middleware/cloudinary')
 const mailer = require('../middleware/nodeMailer')
 
