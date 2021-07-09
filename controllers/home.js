@@ -8,7 +8,7 @@ module.exports = {
     getIndex: async (req, res, next) =>{
         try {
             if(req.headers['x-forward-proto']!='https'){
-                res.redirect('https://www.ebandfloww.art/'+req.url)
+                res.redirect('https://www.ebandfloww.art'+req.url)
             } else {
                 next()
             }
