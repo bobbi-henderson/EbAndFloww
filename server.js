@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
+var enforce = require('express-sslify');
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const connectDB = require('./config/database')
@@ -24,6 +25,7 @@ require('./config/passport')(passport)
 console.log(__dirname)
 
 app.set('view engine', 'ejs')
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())

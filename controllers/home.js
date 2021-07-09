@@ -7,12 +7,6 @@ const isBlog = false
 module.exports = {
     getIndex: async (req, res, next) =>{
         try {
-            if(req.headers['x-forward-proto']!='https'){
-                res.redirect('https://www.ebandfloww.art'+req.url)
-            } else {
-                next()
-            }
-
             const sold = await Art.find({sold: true})
             const avail = await Art.find({sold: false})
             res.render('index.ejs', {sold: sold, avail: avail, isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog})
