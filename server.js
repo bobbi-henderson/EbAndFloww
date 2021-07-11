@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
+const { promisify } = require('util');
 const MongoStore = require('connect-mongo')
 const enforce = require('express-sslify')
 const methodOverride = require('method-override')
