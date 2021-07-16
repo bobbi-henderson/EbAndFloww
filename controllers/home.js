@@ -5,7 +5,7 @@ const isArtOrAuth = false
 const isBlog = false
 
 module.exports = {
-    getIndex: async (req, res) =>{
+    getIndex: async (req, res, next) =>{
         try {
             const sold = await Art.find({sold: true})
             const avail = await Art.find({sold: false})

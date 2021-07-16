@@ -4,7 +4,11 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
+<<<<<<< HEAD
 const { promisify } = require('util');
+=======
+var enforce = require('express-sslify');
+>>>>>>> f268d9dcf5e94ddf56cac562773d5dbcad35627f
 const MongoStore = require('connect-mongo')
 const enforce = require('express-sslify')
 const methodOverride = require('method-override')
@@ -26,6 +30,7 @@ require('./config/passport')(passport)
 console.log(__dirname)
 
 app.set('view engine', 'ejs')
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
