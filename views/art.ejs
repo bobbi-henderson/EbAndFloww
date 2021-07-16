@@ -129,7 +129,7 @@
             <p class="mt-1"><%=piece.desc%></p>
         </div>
     </div>
-    <%if (piece.price) {%>
+    <%if (!piece.sold && piece.price) {%>
     <div class="row justify-content-center">
         <div class="col-xs-4">     
             <p>$<%=piece.price%></p>
@@ -143,10 +143,10 @@
             </div>
         </div>
         <%}%>
-    <%if (piece.link) {%>
+    <%if (!piece.sold && piece.link) {%>
         <div class="row justify-content-center">
             <div class="col-xs-4">         
-                <p>Purchase on <a href="<%=piece.link%>">Etsy</a></p>
+                <p>Purchase on <a href="<%=piece.link%>" target="_blank" rel="noreferrer noopener" id="etsyLink">Etsy</a></p>
             </div>
         </div>
     <%}%>

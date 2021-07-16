@@ -30,8 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(methodOverride('_method'))
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
-
+if (app.get("env") === "production") {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
  
 app.use(
     session({

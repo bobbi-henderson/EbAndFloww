@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 
-<div class="container my-4 text-center w-50 mt-5">
+<div class="container w-50 my-4 mt-5">
     <%if(posts.length > 0){%>
         <%for(let i=0; i<posts.length; i++){%>
             <%if(i%2==0){%>
@@ -25,8 +25,8 @@
             <%}%>
         <%}%>    
     <%} else {%>
-        <div class="row blogContainer2 my-3 p-3">
-            <div class="col">
+        <div id="noPosts" class="row my-3 p-3 d-flex justify-content-center">
+            <div class="col-12 col-sm-8">
                 <h3 class="d-inline">No Posts Yet</h3>
                 <br>
                 <p>Please check back later!</p>
