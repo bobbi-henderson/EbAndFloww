@@ -4,11 +4,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
-<<<<<<< HEAD
-const { promisify } = require('util');
-=======
-var enforce = require('express-sslify');
->>>>>>> f268d9dcf5e94ddf56cac562773d5dbcad35627f
+const {promisify} = require('util')
 const MongoStore = require('connect-mongo')
 const enforce = require('express-sslify')
 const methodOverride = require('method-override')
