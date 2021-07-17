@@ -14,8 +14,7 @@ const homeRoutes = require('./routers/home')
 const authRoutes = require('./routers/auth')
 const artRoutes = require('./routers/art')
 const blogRoutes = require('./routers/blog')
-const PORT = 8000
-
+const PORT = 2121
 
 require('dotenv').config({path: './config/.env'})
 
@@ -25,16 +24,16 @@ require('./config/passport')(passport)
 
 console.log(__dirname)
 
+if (app.get("env") === "production") {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
+
 app.set('view engine', 'ejs')
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(methodOverride('_method'))
-if (app.get("env") === "production") {
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
- 
+
 app.use(
     session({
       secret: "keyboard cat",

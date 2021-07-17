@@ -1,8 +1,35 @@
 <%- include('partials/header') -%>
 
+<div id="loading"></div>
+
 <div class="jumbotron mb-3 mt-2">
 
 </div>
+
+
+
+<h2 id="available" class="pt-5">Available Art</h2>
+<div class="container availArtContainer mb-3 mt-1">
+    <div class="row py-3 avail">
+        <%for(let i=0; i<avail.length; i++){%>
+            <div class="col-xs-4 artHome mx-3">
+                <a onclick="return false" ondblclick="location=this.href" href="art/<%=avail[i]._id%>">
+                    <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage">
+                </a>
+                <p class="dblClickBanner">Double Click to See Info</p>
+            </div>
+        <%}%>
+        <div class="col-xs-4 mx-3 rounded">
+            <a href="https://www.etsy.com/shop/ebandflowwart?ref=simple-shop-header-name&listing_id=1037324618" target="_blank" rel="noreferrer noopener">
+                <p>
+                    For more currently available pieces,
+                    please check Etsy.
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+
 
 
 <h2 id="about" class="pt-5">About Me</h2>
@@ -23,23 +50,8 @@
     </div>
 </div>
 
-<h2 id="available" class="pt-5">Available Art</h2>
-<div class="container availArtContainer mb-3 mt-1">
-    <div class="row py-3 avail">
-        <%for(let i=0; i<avail.length; i++){%>
-            <div class="col-xs-4 artHome mx-3">
-                <a onclick="return false" ondblclick="location=this.href" href="art/<%=avail[i]._id%>">
-                    <img src="<%=avail[i].images[0].url%>" alt="<%=avail[i].name%> Image" class="img-fluid rounded artImage">
-                </a>
-                <p class="dblClickBanner">Double Click to See Info</p>
-            </div>
-        <%}%>
-    </div>
-</div>
-
 
 <h2 id="sold" class="pt-5">Sold Art</h2>
-
 <div class="container soldArtContainer mb-5 mt-1">
     <div class="row py-3 sold">
         <%for(let i=0; i<sold.length; i++){%>
