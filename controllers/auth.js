@@ -68,21 +68,25 @@ module.exports = {
     postForgot: async (req, res) => {
         try {
             const token = (await promisify(crypto.randomBytes)(20)).toString('hex');
-            const user = await User.find({email: req.body.email});
-            if (!user[0]) {
+            const user = await User.findOne({email: req.body.email});
+            if (!user) {
                 req.flash('error', 'No account with that email address exists.');
                 return res.redirect('/admin/forgot');
             } else {
-                user.resetPasswordToken = token;
-                user.resetPasswordExpires = Date.now() + 3600000;
-    
+                await User.findByIdAndUpdate({_id: user._id},{
+                    $set: {
+                        resetPasswordToken: token,
+                        resetPasswordExpires: Date.now() + 3600000,
+                    }
+                })
+
                 const info = await mailer.sendMail({
-                    to: user[0].email,
+                    to: user.email,
                     subject: 'Website Password Reset',
                     text: `
                         You are receiving this because you (or someone else) have requested the reset of the password for your account.
                         Please click on the following link, or paste this into your browser to complete the process:
-                        http://${req.headers.host}/reset/${token}
+                        http://${req.headers.host}/admin/reset/${token}
                         If you did not request this, please ignore this email and your password will remain unchanged.
                     `,
                 })
@@ -97,21 +101,61 @@ module.exports = {
     }, 
     getReset: async (req, res) => {
         try {
-            const user = users.find(u => (
-                (u.resetPasswordExpires > Date.now()) &&
-                crypto.timingSafeEqual(Buffer.from(u.resetPasswordToken), Buffer.from(req.params.token))
-              ));
+            const user = await User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: {$gte: Date.now()}});
             
-              if (!user) {
+            if (!user) {
                 req.flash('error', 'Password reset token is invalid or has expired.');
                 return res.redirect('/forgot');
-              }
+            }
             
-              res.setHeader('Content-type', 'text/html');
-              res.end(templates.layout(`
-                ${templates.error(req.flash())}
-                ${templates.resetPassword(user.resetPasswordToken)}
-              `));
+            res.render('reset.ejs', {isLoggedIn: req.isAuthenticated(), isArtOrAuth: isArtOrAuth, isBlog: isBlog, token: user.resetPasswordToken})
+        } catch(err) {
+            console.log(err)
+        }
+    }, 
+    postReset: async (req, res) =>{
+        try {
+            const validationErrors = []
+            if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
+            if (req.body.password !== req.body.confirmPass) validationErrors.push({ msg: 'Passwords do not match' })
+        
+            if (validationErrors.length) {
+                req.flash('errors', validationErrors)
+                return res.redirect(`/admin/reset/${req.params.token}`)
+            }
+
+            const user = await User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: {$gte: Date.now()}});
+            
+            await User.findOne({_id: user._id}, (err, currentUser) =>{
+                currentUser.password = req.body.password
+
+                currentUser.save((err) => {
+                    if (err) { return next(err) }
+                    req.logIn(user, (err) => {
+                    if (err) {
+                        return next(err)
+                    }
+                    res.redirect('/')
+                    })
+                })
+            })
+
+            await User.findOneAndUpdate({_id: user._id}, {
+                $unset: {
+                    resetPasswordToken: '',
+                    resetPasswordExpires: ''
+                }
+            })
+
+            const info = await mailer.sendMail({
+                to: user.email,
+                subject: 'Your password has been changed',
+                text: `
+                    This is a confirmation that the password for your account "${user.email}" has just been changed.
+                `,
+            })
+            req.flash('success', `Success! Your password has been changed.`);
+            res.redirect('/');
         } catch(err) {
             console.log(err)
         }

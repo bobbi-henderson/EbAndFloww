@@ -6,12 +6,27 @@ const AdminSchema = new mongoose.Schema({
   first: {type: String},
   last: {type: String},
   email: { type: String, unique: true },
-  password: String
+  password: {type: String},
+  resetPasswordToken: {type: String, unqiue: true},
+  resetPasswordExpires: {type: Date},
 })
  
 AdminSchema.pre('save', function save(next) {
   const user = this
   if (!user.isModified('password')) { return next() }
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) { return next(err) }
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if (err) { return next(err) }
+      user.password = hash
+      next()
+    })
+  })
+})
+
+AdminSchema.pre('save', function save(next) {
+  const user = this
+  if (user.isModified('password')) { return next() }
   bcrypt.genSalt(10, (err, salt) => {
     if (err) { return next(err) }
     bcrypt.hash(user.password, salt, (err, hash) => {

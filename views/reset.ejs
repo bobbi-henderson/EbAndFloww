@@ -4,12 +4,12 @@
     <div class="row justify-content-center">
         <div class="col-11 col-sm-8 col-md-7 col-lg-4">
             <h1>Login</h1>
-            <form action="/admin/login" method="POST" id="login" class="p-3">
+            <form action="/admin/reset/<%=token%>" method="POST" id="login" class="p-3">
                 <div class="form-group mx-2"> 
                     <label for="password" class="">Password</label>
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group mx-2">
                     <label for="confirmPass" class="">Confirm Password</label>
                     <input type="password" name="confirmPass" id="confirmPass" class="form-control">
                 </div>
