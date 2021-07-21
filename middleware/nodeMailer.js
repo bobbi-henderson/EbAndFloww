@@ -1,13 +1,47 @@
-const mailer = require('nodemailer')
+const nodemailer = require('nodemailer')
+const {google} = require('googleapis')
+const OAuth2 = google.auth.OAuth2;
 
 require("dotenv").config({ path: "./config/.env" });
 
-const transporter = mailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.Email,
-        pass: process.env.Password
-    }
-})
+const createTransporter = async () => {
+  const oauth2Client = new OAuth2(
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    "https://developers.google.com/oauthplayground"
+  );
 
-module.exports = transporter
+  oauth2Client.setCredentials({
+    refresh_token: process.env.REFRESH_TOKEN
+  });
+
+  const accessToken = await new Promise((resolve, reject) => {
+    oauth2Client.getAccessToken((err, token) => {
+      if (err) {
+        reject("Failed to create access token :(");
+      }
+      resolve(token);
+    });
+  });
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      type: "OAuth2",
+      user: process.env.EMAIL,
+      accessToken,
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      refreshToken: process.env.REFRESH_TOKEN
+    }
+  });
+
+  return transporter;
+};
+
+const sendEmail = async (emailOptions) => {
+  let emailTransporter = await createTransporter();
+  await emailTransporter.sendMail(emailOptions);
+};
+
+module.exports = {sendEmail}

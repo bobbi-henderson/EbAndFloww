@@ -22,12 +22,15 @@ module.exports = {
             const message = req.body.message
             
 
-            const info = await mailer.sendMail({
-                to: `${process.env.Email}, ${email}`,
+            const emailOptions = {
+                to: `ebandfloww.art@gmail.com`,
+                cc: `${email}`,
                 subject: `${subject}`,
                 html: `<h3>${name} asked a question!</h3>
                         <p>${message}</p>`
-            })
+            }
+            
+            await mailer.sendEmail(emailOptions)
 
             res.redirect('back')
         } catch(err) {

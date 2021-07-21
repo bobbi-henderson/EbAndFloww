@@ -65,13 +65,16 @@ module.exports = {
             const img = piece.images[0].url
             
 
-            const info = await mailer.sendMail({
-                to: `${process.env.Email}, ${email}`,
+            const emailOptions = {
+                to: `ebandfloww.art@gmail.com`,
+                cc: `${email}`,
                 subject: `${name} has a question about ${pieceName}`,
                 html: `<h3>${name} asked a question about ${pieceName}!</h3>
-                        <img src="${img}" alt="Event Photo" width="600" height="400">
+                        <img src="${img}" alt="Event Photo" height="400">
                         <p>${message}</p>`
-            })
+            }
+
+            await mailer.sendEmail(emailOptions)
             
             res.redirect('back')
         

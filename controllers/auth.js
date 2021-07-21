@@ -80,7 +80,7 @@ module.exports = {
                     }
                 })
 
-                const info = await mailer.sendMail({
+                const emailOptions = {
                     to: user.email,
                     subject: 'Website Password Reset',
                     text: `
@@ -89,7 +89,9 @@ module.exports = {
                         http://${req.headers.host}/admin/reset/${token}
                         If you did not request this, please ignore this email and your password will remain unchanged.
                     `,
-                })
+                }
+
+                await mailer.sendEmail(emailOptions)
     
                 req.flash('info', `An e-mail has been sent to ${user.email} with further instructions.`);
               
@@ -147,13 +149,16 @@ module.exports = {
                 }
             })
 
-            const info = await mailer.sendMail({
+            const emailOptions ={
                 to: user.email,
                 subject: 'Your password has been changed',
                 text: `
                     This is a confirmation that the password for your account "${user.email}" has just been changed.
                 `,
-            })
+            }
+
+            await mailer.sendEmail(emailOptions)
+
             req.flash('success', `Success! Your password has been changed.`);
             res.redirect('/');
         } catch(err) {
